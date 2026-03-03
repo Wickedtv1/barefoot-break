@@ -1,0 +1,59 @@
+{
+  "facebook": {
+    "status": "blocked",
+    "note": "Facebook scraping was blocked. Using provided brand assets instead."
+  },
+  "wildmex": {
+    "source": "https://wildmex.com",
+    "scraped_date": "2026-03-03",
+    "findings": {
+      "san_pancho": "WildMex expanded to San Pancho with new location opened November 19th",
+      "marietas_islands": "Offers 'Snorkel Safari in the beautiful Islas Marietas and the hidden Beach of Love'",
+      "activities": [
+        "Jungle Hiking Tours (Monkey Mountain)",
+        "Mountain Bike Tours",
+        "Surf Lessons & Camps",
+        "Equipment Rentals (300+ surfboards, SUP, mountain bikes)"
+      ],
+      "contact": {
+        "phone_mexico": "+52 331 454 0336",
+        "phone_us": "+1 877 904 3974",
+        "email": "info@wildmex.com",
+        "hours": "7:30 AM – 8:30 PM year-round"
+      }
+    }
+  },
+  "riviera_nayarit": {
+    "source": "https://www.rivieranayarit.com",
+    "scraped_date": "2026-03-03",
+    "findings": {
+      "san_pancho": "Identified as 'Cultural capital of Riviera Nayarit' with beach access",
+      "marietas_islands": "Reference to Islas Marietas - Playa Escondida (Hidden Beach)",
+      "activities_mentioned": "Surfing, polo, circus, fishing, martial arts, sailing",
+      "activity_categories": [
+        "Water Activities",
+        "Land Activities",
+        "Dining & Entertainment",
+        "Spa & Wellness"
+      ]
+    }
+  },
+  "business_info": {
+    "name": "Barefoot Break",
+    "tagline": "Your First Wave Starts Here.",
+    "location": "San Pancho (San Francisco), Nayarit, Mexico",
+    "phone": "+52 322 140 9733",
+    "whatsapp": "523221409733",
+    "services": [
+      "Surf lessons (beginner and intermediate)",
+      "Board rentals (longboards, shortboards, SUPs, softboards)",
+      "Whale watching tours (December - March)",
+      "Marietas Islands snorkeling",
+      "Sport fishing",
+      "Mountain bike tours",
+      "Jungle hiking"
+    ],
+    "payment": "Cash only upon arrival (MXN or USD)",
+    "hours": "Monday - Sunday, 8:00 AM - 6:00 PM"
+  }
+}

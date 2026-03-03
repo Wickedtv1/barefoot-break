@@ -1,0 +1,131 @@
+{
+  "surf": [
+    {
+      "id": "surf-lessons-beginner",
+      "category": "surf",
+      "subcategory": "Lessons",
+      "name": "Beginner Surf Lesson",
+      "description": "Never surfed before? Our patient, certified instructors will have you riding your first wave by the end of the session. All equipment included. Group and private options available.",
+      "duration": "2 hours",
+      "includes": ["Surfboard", "Leash", "Rash guard", "Certified instructor"],
+      "meetingPoint": "Barefoot Break Shop, Avenida Tercer Mundo, San Pancho",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": false,
+      "icon": "🏄"
+    },
+    {
+      "id": "surf-lessons-intermediate",
+      "category": "surf",
+      "subcategory": "Lessons",
+      "name": "Intermediate Surf Clinic",
+      "description": "Already standing up? Level up your technique. Work on timing, positioning, and reading the San Pancho break — one of the fastest and most rewarding waves on the Riviera Nayarit.",
+      "duration": "2 hours",
+      "includes": ["Surfboard", "Leash", "Video analysis", "Instructor"],
+      "meetingPoint": "Barefoot Break Shop, Avenida Tercer Mundo, San Pancho",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": false,
+      "icon": "🌊"
+    },
+    {
+      "id": "board-rental",
+      "category": "surf",
+      "subcategory": "Rentals",
+      "name": "Board Rental",
+      "description": "Choose from our curated quiver of shortboards, longboards, and SUPs. All boards are well-maintained and matched to the daily conditions.",
+      "duration": "Half day / Full day",
+      "includes": ["Board of choice", "Leash", "Wax"],
+      "meetingPoint": "Barefoot Break Shop, Avenida Tercer Mundo, San Pancho",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": false,
+      "icon": "🛹"
+    }
+  ],
+  "sea": [
+    {
+      "id": "whale-watching",
+      "category": "sea",
+      "subcategory": "Whale Watching",
+      "name": "Humpback Whale Watching",
+      "description": "Witness the magnificent humpback whales that migrate through Banderas Bay from December through March. Our experienced captains know exactly where to find them. An unforgettable morning on the water.",
+      "duration": "3 hours",
+      "includes": ["Boat tour", "Life jackets", "Bottled water", "Local guide"],
+      "meetingPoint": "San Pancho Beach Pier",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": true,
+      "seasonalNote": "December – March only",
+      "icon": "🐋"
+    },
+    {
+      "id": "marietas-snorkeling",
+      "category": "sea",
+      "subcategory": "Snorkeling",
+      "name": "Marietas Islands Snorkeling",
+      "description": "Explore the famous Islas Marietas — a UNESCO Biosphere Reserve. Snorkel crystal-clear waters teeming with tropical fish, rays, and sea turtles. Visit the legendary Hidden Beach (Playa del Amor) inside a volcanic crater. Life jackets mandatory; 10-minute swim into the beach.",
+      "duration": "Full day (6-7 hours)",
+      "includes": ["Boat transport", "Snorkel gear", "Life jacket", "Local lunch", "Guide"],
+      "meetingPoint": "San Pancho Beach Pier",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": false,
+      "icon": "🤿"
+    },
+    {
+      "id": "sport-fishing",
+      "category": "sea",
+      "subcategory": "Fishing",
+      "name": "Sport Fishing",
+      "description": "San Pancho's waters are rich with Mahi-Mahi, Tuna, Wahoo, and more. Head out at dawn on a traditional panga with our local fishermen who know these waters like family. Beginner-friendly.",
+      "duration": "4-6 hours",
+      "includes": ["Panga boat", "Fishing gear", "Bait", "Local captain", "Ice cooler"],
+      "meetingPoint": "San Pancho Beach Pier",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": false,
+      "icon": "🎣"
+    }
+  ],
+  "land": [
+    {
+      "id": "mountain-bike-tour",
+      "category": "land",
+      "subcategory": "Biking",
+      "name": "Jungle Mountain Bike Tour",
+      "description": "Ride through the lush Sierra Madre trails behind San Pancho. Navigate jungle single-track, pass giant Parota trees, and discover hidden viewpoints with panoramic ocean views. Suitable for intermediate riders.",
+      "duration": "3 hours",
+      "includes": ["Specialized mountain bike", "Helmet", "Local guide", "Fresh fruit snack"],
+      "meetingPoint": "Barefoot Break Shop, Avenida Tercer Mundo, San Pancho",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": false,
+      "difficulty": "Moderate",
+      "icon": "🚵"
+    },
+    {
+      "id": "sierra-madre-hike",
+      "category": "land",
+      "subcategory": "Hiking",
+      "name": "Sierra Madre Jungle Hike",
+      "description": "Walk into the wild. Trek through tropical forest, spot exotic birds, and learn about the local ecosystem from our nature-savvy guides. Ends with a refreshing dip in a natural freshwater pool.",
+      "duration": "3-4 hours",
+      "includes": ["Local guide", "Water", "Snack", "Swimming stop"],
+      "meetingPoint": "Barefoot Break Shop, Avenida Tercer Mundo, San Pancho",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": false,
+      "difficulty": "Easy to Moderate",
+      "icon": "🥾"
+    }
+  ]
+}
