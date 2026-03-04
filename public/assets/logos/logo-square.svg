@@ -1,0 +1,14 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#C4550A" rx="20"/>
+  <rect x="10" y="10" width="380" height="380" fill="none" stroke="#D4A017" stroke-width="8" rx="15"/>
+  <text x="200" y="150" font-family="Playfair Display, serif" font-size="72" font-weight="bold" fill="#FFF3D6" text-anchor="middle">
+    BAREFOOT
+  </text>
+  <text x="200" y="230" font-family="Playfair Display, serif" font-size="72" font-weight="bold" fill="#FFF3D6" text-anchor="middle">
+    BREAK
+  </text>
+  <path d="M 80 260 Q 200 280 320 260" stroke="#1A8A8A" stroke-width="6" fill="none"/>
+  <text x="200" y="320" font-family="Cinzel, serif" font-size="24" fill="#FFF3D6" text-anchor="middle" letter-spacing="4">
+    SAN PANCHO
+  </text>
+</svg>

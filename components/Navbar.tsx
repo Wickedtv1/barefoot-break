@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -9,6 +9,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAdventuresOpen, setIsAdventuresOpen] = useState(false);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,12 +30,26 @@ export default function Navbar() {
     document.body.style.overflow = 'unset';
   };
 
+  const handleMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setIsAdventuresOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    // Add delay before closing dropdown
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsAdventuresOpen(false);
+    }, 300);
+  };
+
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-brown-brand/95 backdrop-blur-md shadow-lg'
+            ? 'bg-brown-brand/95 backdrop-blur-md shadow-2xl'
             : 'glass'
         }`}
       >
@@ -42,14 +57,17 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="w-12 h-12 relative">
-                {/* TODO: Add logo-circle.png to public/assets/logos/ */}
-                <div className="w-12 h-12 rounded-full bg-amber-brand flex items-center justify-center text-white font-display text-xl">
-                  BB
-                </div>
+              <div className="w-14 h-14 relative transition-transform hover:scale-110 duration-300">
+                <Image
+                  src="/assets/logos/logo-circle.svg"
+                  alt="Barefoot Break"
+                  fill
+                  className="object-contain drop-shadow-lg"
+                  priority
+                />
               </div>
               <div className="hidden sm:block">
-                <span className="text-white font-display text-xl group-hover:text-gold-brand transition-colors">
+                <span className="text-white font-display text-xl font-bold group-hover:text-gold-brand transition-colors">
                   Barefoot Break
                 </span>
               </div>
@@ -59,36 +77,47 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center space-x-8">
               <Link
                 href="/"
-                className="text-white hover:text-gold-brand transition-colors font-medium"
+                className="text-white hover:text-gold-brand transition-colors font-semibold text-sm uppercase tracking-wide"
               >
                 Home
               </Link>
 
-              {/* Adventures Dropdown */}
+              {/* Adventures Dropdown with Hover Delay */}
               <div
-                className="relative"
-                onMouseEnter={() => setIsAdventuresOpen(true)}
-                onMouseLeave={() => setIsAdventuresOpen(false)}
+                className="relative group"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
-                <button className="text-white hover:text-gold-brand transition-colors font-medium flex items-center space-x-1">
+                <button className="text-white hover:text-gold-brand transition-colors font-semibold text-sm uppercase tracking-wide flex items-center space-x-1">
                   <span>Adventures</span>
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      isAdventuresOpen ? 'rotate-180' : ''
+                    }`}
+                  />
                 </button>
 
                 {/* Mega Dropdown */}
-                {isAdventuresOpen && (
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-brown-brand/98 backdrop-blur-md rounded-xl shadow-2xl p-8 border border-amber-brand/20">
-                    <div className="grid grid-cols-3 gap-6">
+                <div
+                  className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[650px] transition-all duration-300 ${
+                    isAdventuresOpen
+                      ? 'opacity-100 visible translate-y-0'
+                      : 'opacity-0 invisible -translate-y-4'
+                  }`}
+                >
+                  <div className="bg-brown-brand/98 backdrop-blur-md rounded-2xl shadow-2xl p-8 border-2 border-amber-brand/30">
+                    <div className="grid grid-cols-3 gap-8">
                       {/* Sea Tours */}
                       <div>
-                        <h3 className="text-gold-brand font-cinzel text-sm uppercase tracking-wider mb-4">
-                          🌊 Sea Tours
+                        <h3 className="text-gold-brand font-cinzel text-xs uppercase tracking-wider mb-4 flex items-center space-x-2">
+                          <span className="text-2xl">🌊</span>
+                          <span>Sea Tours</span>
                         </h3>
                         <ul className="space-y-3">
                           <li>
                             <Link
                               href="/tours#whale-watching"
-                              className="text-sand-brand hover:text-white transition-colors text-sm block"
+                              className="text-sand-brand hover:text-white hover:translate-x-1 transition-all text-sm block"
                             >
                               🐋 Whale Watching
                             </Link>
@@ -96,7 +125,7 @@ export default function Navbar() {
                           <li>
                             <Link
                               href="/tours#marietas-snorkeling"
-                              className="text-sand-brand hover:text-white transition-colors text-sm block"
+                              className="text-sand-brand hover:text-white hover:translate-x-1 transition-all text-sm block"
                             >
                               🤿 Marietas Islands
                             </Link>
@@ -104,7 +133,7 @@ export default function Navbar() {
                           <li>
                             <Link
                               href="/tours#sport-fishing"
-                              className="text-sand-brand hover:text-white transition-colors text-sm block"
+                              className="text-sand-brand hover:text-white hover:translate-x-1 transition-all text-sm block"
                             >
                               🎣 Sport Fishing
                             </Link>
@@ -114,22 +143,23 @@ export default function Navbar() {
 
                       {/* Land Adventures */}
                       <div>
-                        <h3 className="text-gold-brand font-cinzel text-sm uppercase tracking-wider mb-4">
-                          🚵 Land Adventures
+                        <h3 className="text-gold-brand font-cinzel text-xs uppercase tracking-wider mb-4 flex items-center space-x-2">
+                          <span className="text-2xl">🚵</span>
+                          <span>Land</span>
                         </h3>
                         <ul className="space-y-3">
                           <li>
                             <Link
                               href="/tours#mountain-bike-tour"
-                              className="text-sand-brand hover:text-white transition-colors text-sm block"
+                              className="text-sand-brand hover:text-white hover:translate-x-1 transition-all text-sm block"
                             >
-                              🚵 Mountain Bike Tour
+                              🚵 Mountain Bike
                             </Link>
                           </li>
                           <li>
                             <Link
                               href="/tours#sierra-madre-hike"
-                              className="text-sand-brand hover:text-white transition-colors text-sm block"
+                              className="text-sand-brand hover:text-white hover:translate-x-1 transition-all text-sm block"
                             >
                               🥾 Jungle Hike
                             </Link>
@@ -139,114 +169,116 @@ export default function Navbar() {
 
                       {/* Surf */}
                       <div>
-                        <h3 className="text-gold-brand font-cinzel text-sm uppercase tracking-wider mb-4">
-                          🏄 Surf
+                        <h3 className="text-gold-brand font-cinzel text-xs uppercase tracking-wider mb-4 flex items-center space-x-2">
+                          <span className="text-2xl">🏄</span>
+                          <span>Surf</span>
                         </h3>
                         <ul className="space-y-3">
                           <li>
                             <Link
                               href="/surf-shop#beginner-lessons"
-                              className="text-sand-brand hover:text-white transition-colors text-sm block"
+                              className="text-sand-brand hover:text-white hover:translate-x-1 transition-all text-sm block"
                             >
-                              🏄 Beginner Lessons
+                              🏄 Beginners
                             </Link>
                           </li>
                           <li>
                             <Link
                               href="/surf-shop#intermediate-clinic"
-                              className="text-sand-brand hover:text-white transition-colors text-sm block"
+                              className="text-sand-brand hover:text-white hover:translate-x-1 transition-all text-sm block"
                             >
-                              🌊 Intermediate Clinic
+                              🌊 Intermediate
                             </Link>
                           </li>
                           <li>
                             <Link
                               href="/surf-shop#board-rentals"
-                              className="text-sand-brand hover:text-white transition-colors text-sm block"
+                              className="text-sand-brand hover:text-white hover:translate-x-1 transition-all text-sm block"
                             >
-                              🛹 Board Rentals
+                              🛹 Rentals
                             </Link>
                           </li>
                         </ul>
                       </div>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
 
               <Link
                 href="/surf-shop"
-                className="text-white hover:text-gold-brand transition-colors font-medium"
+                className="text-white hover:text-gold-brand transition-colors font-semibold text-sm uppercase tracking-wide"
               >
                 Surf Shop
               </Link>
 
               <Link
                 href="/san-pancho"
-                className="text-white hover:text-gold-brand transition-colors font-medium"
+                className="text-white hover:text-gold-brand transition-colors font-semibold text-sm uppercase tracking-wide"
               >
                 San Pancho
               </Link>
 
               <Link
                 href="/contact"
-                className="bg-amber-brand hover:bg-gold-brand text-white px-6 py-2 rounded-full font-medium transition-all btn-hover"
+                className="bg-gradient-to-r from-amber-brand to-gold-brand hover:shadow-xl hover:shadow-amber-brand/50 text-white px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wide transition-all duration-300 hover:scale-105"
               >
-                Contact & Book
+                Book Now
               </Link>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden text-white hover:text-gold-brand transition-colors"
+              className="lg:hidden text-white hover:text-gold-brand transition-colors p-2"
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-7 h-7" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-7 h-7" />
               )}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Fixed positioning to prevent overlaps */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
-          <div className="fixed inset-0 bg-brown-brand/98 backdrop-blur-md">
-            <div className="flex flex-col items-center justify-center min-h-screen p-8 space-y-8">
+          <div className="fixed inset-0 bg-brown-brand/98 backdrop-blur-xl pt-20">
+            <div className="flex flex-col items-center justify-start min-h-screen p-6 space-y-6 overflow-y-auto">
               <Link
                 href="/"
                 onClick={closeMobileMenu}
-                className="text-white hover:text-gold-brand transition-colors text-2xl font-display"
+                className="text-white hover:text-gold-brand transition-colors text-2xl font-display font-bold"
               >
                 Home
               </Link>
 
-              <div className="text-center space-y-4">
-                <h3 className="text-gold-brand font-cinzel text-sm uppercase tracking-wider">
+              <div className="text-center space-y-4 w-full max-w-xs">
+                <h3 className="text-gold-brand font-cinzel text-sm uppercase tracking-wider border-b border-amber-brand/30 pb-2">
                   Adventures
                 </h3>
                 <div className="space-y-3">
                   <Link
                     href="/tours"
                     onClick={closeMobileMenu}
-                    className="block text-white hover:text-gold-brand transition-colors text-lg"
+                    className="block text-white hover:text-gold-brand transition-colors text-lg font-semibold"
                   >
                     All Tours
                   </Link>
                   <Link
                     href="/tours#sea"
                     onClick={closeMobileMenu}
-                    className="block text-sand-brand hover:text-white transition-colors"
+                    className="block text-sand-brand/90 hover:text-white transition-colors"
                   >
                     🌊 Sea Tours
                   </Link>
                   <Link
                     href="/tours#land"
                     onClick={closeMobileMenu}
-                    className="block text-sand-brand hover:text-white transition-colors"
+                    className="block text-sand-brand/90 hover:text-white transition-colors"
                   >
                     🚵 Land Adventures
                   </Link>
@@ -256,7 +288,7 @@ export default function Navbar() {
               <Link
                 href="/surf-shop"
                 onClick={closeMobileMenu}
-                className="text-white hover:text-gold-brand transition-colors text-2xl font-display"
+                className="text-white hover:text-gold-brand transition-colors text-2xl font-display font-bold"
               >
                 Surf Shop
               </Link>
@@ -264,7 +296,7 @@ export default function Navbar() {
               <Link
                 href="/san-pancho"
                 onClick={closeMobileMenu}
-                className="text-white hover:text-gold-brand transition-colors text-2xl font-display"
+                className="text-white hover:text-gold-brand transition-colors text-2xl font-display font-bold"
               >
                 San Pancho
               </Link>
@@ -272,13 +304,15 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={closeMobileMenu}
-                className="bg-amber-brand hover:bg-gold-brand text-white px-8 py-3 rounded-full font-medium text-lg transition-all btn-hover"
+                className="bg-gradient-to-r from-amber-brand to-gold-brand text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-2xl mt-4"
               >
-                Contact & Book
+                Book Now
               </Link>
 
-              <div className="pt-8 text-sand-brand text-sm text-center">
-                <p>Your First Wave Starts Here.</p>
+              <div className="pt-6 text-sand-brand/70 text-sm text-center">
+                <p className="font-cinzel tracking-wide">
+                  Your First Wave Starts Here
+                </p>
               </div>
             </div>
           </div>

@@ -4,6 +4,7 @@ import SeasonalBanner from '@/components/SeasonalBanner';
 import HeroSection from '@/components/HeroSection';
 import SurfReportBanner from '@/components/SurfReportBanner';
 import TourCard from '@/components/TourCard';
+import Gallery from '@/components/Gallery';
 import toursData from '@/data/tours.json';
 import { Waves, Mountain, Palmtree, CheckCircle, MessageCircle } from 'lucide-react';
 
@@ -264,49 +265,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Instagram-style Photo Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="section-title">Gallery</p>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-brown-brand">
-              Life at Barefoot Break
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {/* TODO: Replace with actual photos */}
-            {[
-              { label: 'Beginner Surf Lesson', category: 'Surf' },
-              { label: 'Whale Watching', category: 'Sea' },
-              { label: 'Marietas Islands', category: 'Sea' },
-              { label: 'Sport Fishing', category: 'Sea' },
-              { label: 'San Pancho Sunset', category: 'Town' },
-              { label: 'Jungle Mountain Biking', category: 'Land' },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="relative aspect-square bg-gradient-to-br from-amber-brand/20 to-teal-brand/20 rounded-xl overflow-hidden group cursor-pointer"
-              >
-                <div className="absolute inset-0 bg-brown-brand/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="text-center">
-                    <p className="text-white font-display text-xl mb-2">
-                      {item.label}
-                    </p>
-                    <p className="text-sand-brand text-sm">{item.category}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-8 text-brown-brand/60">
-            <p className="text-sm">
-              📸 Photos coming soon! Follow us on Instagram for daily updates.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Photo Gallery - Masonry Layout */}
+      <Gallery />
     </>
   );
 }
