@@ -49,7 +49,7 @@ export default function HeroSection() {
         >
           <div className="relative w-56 h-56 drop-shadow-2xl transition-transform hover:scale-105 duration-500">
             <Image
-              src="/assets/logos/logo-square.svg"
+              src="/assets/logos/logo-square.png"
               alt="Barefoot Break Logo"
               fill
               className="object-contain"
@@ -145,27 +145,27 @@ export default function HeroSection() {
             <span className="font-semibold">1000+ Happy Surfers</span>
           </div>
         </div>
+      </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center space-y-2 text-white/70">
-            <span className="text-sm font-cinzel uppercase tracking-wider">
-              Scroll
-            </span>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
+      {/* Scroll Indicator - at the very bottom of hero section */}
+      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+        <div className="flex flex-col items-center space-y-2 text-white/70">
+          <span className="text-sm font-cinzel uppercase tracking-wider">
+            Scroll
+          </span>
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
         </div>
       </div>
 

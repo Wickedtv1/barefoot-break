@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export default function Footer() {
@@ -11,9 +12,13 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              {/* TODO: Add logo-circle.png */}
-              <div className="w-16 h-16 rounded-full bg-amber-brand flex items-center justify-center text-white font-display text-2xl">
-                BB
+              <div className="w-16 h-16 relative">
+                <Image
+                  src="/assets/logos/logo-circle.png"
+                  alt="Barefoot Break"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
             <h3 className="text-white font-display text-xl">Barefoot Break</h3>

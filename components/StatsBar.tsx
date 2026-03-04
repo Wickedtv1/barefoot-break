@@ -11,8 +11,8 @@ interface Stat {
 
 const stats: Stat[] = [
   { number: 10, suffix: '+', label: 'Years Experience', icon: '⭐' },
-  { number: 1000, suffix: '+', label: 'Happy Surfers', icon: '🏄' },
-  { number: 50, suffix: '+', label: 'Weekly Tours', icon: '🌊' },
+  { number: 500, suffix: '+', label: 'Happy Surfers', icon: '🏄' },
+  { number: 7, suffix: '', label: 'Weekly Tours', icon: '🌊' },
   { number: 100, suffix: '%', label: 'Local Guides', icon: '🇲🇽' },
 ];
 
@@ -57,7 +57,7 @@ export default function StatsBar() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
         }
       },
@@ -68,8 +68,12 @@ export default function StatsBar() {
       observer.observe(ref.current);
     }
 
-    return () => observer.disconnect();
-  }, [isVisible]);
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
 
   return (
     <section
@@ -91,7 +95,7 @@ export default function StatsBar() {
                 {isVisible ? (
                   <AnimatedNumber target={stat.number} suffix={stat.suffix} />
                 ) : (
-                  `0${stat.suffix}`
+                  <span>{stat.suffix ? `0${stat.suffix}` : '0'}</span>
                 )}
               </div>
               <div className="text-sm md:text-base text-sand-brand font-semibold uppercase tracking-wide">

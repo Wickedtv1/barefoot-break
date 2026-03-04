@@ -41,7 +41,7 @@ export default function Navbar() {
     // Add delay before closing dropdown
     hoverTimeoutRef.current = setTimeout(() => {
       setIsAdventuresOpen(false);
-    }, 200);
+    }, 300);
   };
 
   return (
@@ -57,9 +57,9 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="w-14 h-14 relative transition-transform hover:scale-110 duration-300">
+              <div className="w-14 h-14 relative transition-transform hover:rotate-12 hover:scale-110 duration-300">
                 <Image
-                  src="/assets/logos/logo-circle.svg"
+                  src="/assets/logos/logo-circle.png"
                   alt="Barefoot Break"
                   fill
                   className="object-contain drop-shadow-lg"
@@ -97,7 +97,7 @@ export default function Navbar() {
                   />
                 </button>
 
-                {/* Mega Dropdown */}
+                {/* Mega Dropdown - transparent and usable fix */}
                 <div
                   className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[650px] transition-all duration-300 ${
                     isAdventuresOpen
@@ -105,7 +105,19 @@ export default function Navbar() {
                       : 'opacity-0 invisible -translate-y-4'
                   }`}
                 >
-                  <div className="bg-brown-brand/98 backdrop-blur-md rounded-2xl shadow-2xl p-8 border-2 border-amber-brand/30">
+                  <div
+                    className="bg-[#1A0A00] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-8 border-2 border-[#C4550A]"
+                    onMouseEnter={() => {
+                      if (hoverTimeoutRef.current) {
+                        clearTimeout(hoverTimeoutRef.current);
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      hoverTimeoutRef.current = setTimeout(() => {
+                        setIsAdventuresOpen(false);
+                      }, 300);
+                    }}
+                  >
                     <div className="grid grid-cols-3 gap-8">
                       {/* Sea Tours */}
                       <div>
