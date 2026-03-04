@@ -97,13 +97,19 @@ export default function TourCard({ tour }: TourCardProps) {
       {/* Price & CTA */}
       <div className="flex items-center justify-between pt-4 border-t border-brown-brand/10">
         <div>
-          <span className="text-2xl font-bold text-brown-brand">
-            {tour.price}
-          </span>
-          {tour.price !== 'TBD' && (
-            <span className="text-sm text-brown-brand/60 ml-1">
-              {tour.currency}
+          {tour.price === 'TBD' ? (
+            <span className="text-sm text-amber-brand italic">
+              Contact us for pricing
             </span>
+          ) : (
+            <>
+              <span className="text-2xl font-bold text-brown-brand">
+                {tour.price}
+              </span>
+              <span className="text-sm text-brown-brand/60 ml-1">
+                {tour.currency}
+              </span>
+            </>
           )}
           {tour.cashOnly && (
             <div className="text-xs text-amber-brand mt-1">💵 Cash only</div>

@@ -92,6 +92,22 @@
       "cashOnly": true,
       "seasonal": false,
       "icon": "🎣"
+    },
+    {
+      "id": "turtle-release",
+      "category": "sea",
+      "subcategory": "Conservation",
+      "name": "Sea Turtle Release Experience",
+      "description": "One of the most magical experiences on the Pacific coast. Visit the local turtle sanctuary where Olive Ridley sea turtles are protected and hatched. Help release baby turtles into the ocean as the sun sets over the Pacific. A profound moment you'll never forget. Seasonal, weather-dependent.",
+      "duration": "2 hours (sunset)",
+      "includes": ["Sanctuary visit", "Conservation education", "Release participation", "Local guide"],
+      "meetingPoint": "San Pancho Beach",
+      "price": "TBD",
+      "currency": "MXN",
+      "cashOnly": true,
+      "seasonal": true,
+      "seasonalNote": "July – December only (nesting season)",
+      "icon": "🐢"
     }
   ],
   "land": [

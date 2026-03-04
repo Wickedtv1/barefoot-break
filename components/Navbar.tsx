@@ -41,16 +41,16 @@ export default function Navbar() {
     // Add delay before closing dropdown
     hoverTimeoutRef.current = setTimeout(() => {
       setIsAdventuresOpen(false);
-    }, 300);
+    }, 200);
   };
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-brown-brand/95 backdrop-blur-md shadow-2xl'
-            : 'glass'
+            ? 'top-0 bg-brown-brand/95 backdrop-blur-md shadow-2xl'
+            : 'top-12 glass'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

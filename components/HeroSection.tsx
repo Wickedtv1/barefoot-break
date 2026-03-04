@@ -147,7 +147,7 @@ export default function HeroSection() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="flex flex-col items-center space-y-2 text-white/70">
             <span className="text-sm font-cinzel uppercase tracking-wider">
               Scroll
@@ -167,6 +167,53 @@ export default function HeroSection() {
             </svg>
           </div>
         </div>
+      </div>
+
+      {/* Animated Wave Divider at Bottom */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg
+          className="w-full h-24"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <style>{`
+            @keyframes heroWave1 {
+              0%, 100% { transform: translateX(0); }
+              50% { transform: translateX(-25px); }
+            }
+            @keyframes heroWave2 {
+              0%, 100% { transform: translateX(0); }
+              50% { transform: translateX(25px); }
+            }
+            @keyframes heroWave3 {
+              0%, 100% { transform: translateX(0); }
+              50% { transform: translateX(-15px); }
+            }
+            .heroWave1 { animation: heroWave1 7s ease-in-out infinite; }
+            .heroWave2 { animation: heroWave2 5s ease-in-out infinite; }
+            .heroWave3 { animation: heroWave3 9s ease-in-out infinite; }
+          `}</style>
+
+          <path
+            className="heroWave1"
+            d="M0,40 Q150,20 300,40 T600,40 T900,40 T1200,40 L1200,120 L0,120 Z"
+            fill="#1A8A8A"
+            opacity="0.3"
+          />
+          <path
+            className="heroWave2"
+            d="M0,60 Q150,50 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z"
+            fill="#1A8A8A"
+            opacity="0.5"
+          />
+          <path
+            className="heroWave3"
+            d="M0,80 Q150,70 300,80 T600,80 T900,80 T1200,80 L1200,120 L0,120 Z"
+            fill="#1A8A8A"
+            opacity="0.7"
+          />
+        </svg>
       </div>
     </section>
   );

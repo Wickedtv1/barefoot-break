@@ -7,6 +7,7 @@ import { X } from 'lucide-react';
 export default function SeasonalBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const checkSeason = () => {
@@ -20,6 +21,15 @@ export default function SeasonalBanner() {
     checkSeason();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleDismiss = () => {
     setIsDismissed(true);
   };
@@ -29,7 +39,11 @@ export default function SeasonalBanner() {
   }
 
   return (
-    <div className="bg-amber-brand text-white py-3 relative">
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 bg-amber-brand text-white py-3 transition-transform duration-300 ${
+        isScrolled ? '-translate-y-full' : 'translate-y-0'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3 flex-1">
